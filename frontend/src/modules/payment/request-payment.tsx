@@ -85,15 +85,11 @@ function CopyBtn({ value, label }: { value: string; label: string }) {
 
 // -------- Component --------
 type Props = {
-  triggerLabel?: string;
-  defaultWalletId?: string;
   defaultAmount?: number;
   onCreated?: (resp: IncomingPaymentResponse, incomingPaymentId: string) => void;
 };
 
 export function IncomingPaymentModal({
-  triggerLabel = "New incoming payment",
-  defaultWalletId = "",
   defaultAmount = 100,
   onCreated,
 }: Props) {
