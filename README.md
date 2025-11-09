@@ -2,7 +2,12 @@
 
 ## Install dependencies for frontend and backend
 ```js
-    pnpm install
+pnpm install
+```
+
+## Setup the .env file
+```
+cp .env.example .env
 ```
 
 ## If you get lost please look at the documentation of interledger
