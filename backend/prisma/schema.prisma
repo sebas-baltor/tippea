@@ -1,0 +1,74 @@
+// // This is your Prisma schema file,
+// // learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// generator client {
+//   provider = "prisma-client"
+//   output   = "../generated/prisma"
+// }
+
+// datasource db {
+//   provider = "sqlite"
+//   url      = env("DATABASE_URL")
+// }
+
+// // The User model represents a creator or a tipper on the platform.
+// model User {
+//   id            String    @id @default(cuid())
+//   email         String    @unique
+//   username      String    @unique // Public-facing identifier
+//   name          String?
+//   createdAt     DateTime  @default(now())
+//   wallet        String
+
+//   transactions  Transaction[]
+// }
+
+
+// // This model provides an immutable log of all transactions.
+// // It is the single source of truth for all money movement.
+// model Transaction {
+//   id            String    @id @default(cuid())
+//   createdAt     DateTime  @default(now())
+  
+//   amount        Decimal   // The value of the transaction
+//   assetCode     String
+//   assetScale    Int
+  
+//   // Tracks the status of the Open Payment [26]
+//   status        PaymentStatus @default(PENDING)
+  
+//   // The external ID from the Open Payments provider
+//   // (e.g., the ID from the 'outgoingPayment.create' response)
+//   // This links our internal ledger to the external network.
+//   providerTransactionId String? @unique
+
+//   // Relation to the sender (tipper)
+//   sender        User      @relation("SenderTransactions", fields: [senderId], references: [id])
+//   senderId      String
+  
+//   // Relation to the receiver (creator)
+//   receiver      User      @relation("ReceiverTransactions", fields: [receiverId], references: [id])
+//   receiverId    String
+
+//   // Optional: Link transaction to the specific content that was tipped
+//   // This is a nullable foreign key.
+//   contentItem   ContentItem? @relation(fields: [contentItemId], references: [id])
+//   contentItemId String?
+  
+//   // Optional: Link transaction to the specific widget that was used
+//   // This is a nullable foreign key.
+//   tipWidget     TipWidget?   @relation(fields:, references: [id])
+//   tipWidgetId   String?
+
+//   // Index common query fields for performance
+//   @@index([senderId])
+//   @@index([receiverId])
+//   @@index([contentItemId])
+//   @@index()
+// }
+
+// enum PaymentStatus {
+//   PENDING     // Payment initiated but not yet confirmed
+//   COMPLETED   // Payment settled and funds added to receiver's balance
+//   FAILED      // Payment failed and was rolled back
+// }

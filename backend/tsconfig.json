@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "typeRoots": [
+      "./src/types/",
+      "./node_modules/@types/"
+    ],
+    "target": "ES2019",
+    "module": "es2022",
+    "rootDir": "./src",
+    "outDir": "./build",
+    "esModuleInterop": true,
+    "strict": true,
+    "baseUrl": "src",
+    "paths": {
+      "@/*": [
+        "*"
+      ]
+    },
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "resolveJsonModule": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
