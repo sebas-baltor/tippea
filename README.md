@@ -10,6 +10,17 @@ pnpm install
 cp .env.example .env
 ```
 
+## How to run the project
+for the backend run 
+```js
+pnpm run start:dev
+```
+
+for the frontend run 
+```
+pnpm run dev
+```
+
 ## If you get lost please look at the documentation of interledger
 [Official documentation](https://openpayments.dev/sdk/before-you-begin/)
 [Repo](https://github.com/interledger/open-payments-node)
@@ -17,6 +28,9 @@ cp .env.example .env
 ## Porpuse
 
 This project pretend to be a bridge between small bussines, creator or people that want to be tiped, at the cheapes price and with 0 complications using and open protocol for payments, with the posibility to embed a qr code to let the people start tiping you. 
+
+## Team
+- Sebastián Baltazar
 
 ### Overview
 
